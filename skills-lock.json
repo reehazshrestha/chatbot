@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "apple-ui-design": {
+      "source": "Tamoza4/apple-ui-design",
+      "sourceType": "github",
+      "skillPath": "apple-ui-design/SKILL.md",
+      "computedHash": "0688978315aa87a1d1a9e494d44a96196a3364d7154da3a28b5717cb0a509335"
+    }
+  }
+}
