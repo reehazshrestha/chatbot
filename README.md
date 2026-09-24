@@ -1,6 +1,8 @@
-# Apple Chat
+# BEN
 
-A beautiful, Apple-style AI chat app with buttery-smooth streaming — built with the [apple-ui-design](https://github.com/Tamoza4/apple-ui-design) system (8pt grid, SF Pro typography, glassmorphism, natural spring motion).
+A sleek, Apple-style AI chat + image studio with buttery-smooth streaming — built with the [apple-ui-design](https://github.com/Tamoza4/apple-ui-design) system (8pt grid, SF Pro typography, glassmorphism, natural spring motion).
+
+![BEN](ben.png)
 
 ![stack](https://img.shields.io/badge/zero-dependencies-blue) ![node](https://img.shields.io/badge/node-%3E%3D16-brightgreen)
 
@@ -29,6 +31,8 @@ A beautiful, Apple-style AI chat app with buttery-smooth streaming — built wit
 npm start        # or: node server.js
 ```
 
+Open **http://localhost:3000** — no API key and no `npm install` needed.
+
 ## Deploy to Vercel
 
 The repo ships with serverless functions in `api/` so it runs on Vercel with **zero changes** — push the repo, import it at [vercel.com/new](https://vercel.com/new), and deploy.
@@ -39,8 +43,6 @@ The repo ships with serverless functions in `api/` so it runs on Vercel with **z
 | same routes: `/api/chat`, `/api/models`, `/api/image` | identical — the frontend needs no changes |
 
 Optional env var: `UPSTREAM` (defaults to `https://gemini-web2api-one.vercel.app`).
-
-Open **http://localhost:3000** — no API key and no `npm install` needed.
 
 > The small Node server only serves the UI and proxies `/v1/chat/completions` to `https://gemini-web2api-one.vercel.app` (the API doesn't send CORS headers, so the browser can't call it directly). Streaming is passed through untouched, chunk by chunk.
 >
@@ -63,7 +65,9 @@ The **Thinking** toggle maps your selected base model to its `-thinking` variant
 ## Project layout
 
 ```
-├── server.js          # zero-dep Node server: static files + streaming proxy
+├── server.js          # zero-dep Node server: static files + streaming proxy (local dev)
+├── api/               # Vercel serverless functions (chat, models, image)
+├── vercel.json        # deploy config: static root + function timeouts
 └── public/
     ├── index.html     # app shell
     ├── styles.css     # Apple UI design system
