@@ -120,9 +120,9 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Static files from ./public
+  // Static files from the repo root (same layout as the Vercel deployment)
   let rel = pathname === '/' ? '/index.html' : pathname;
-  const publicRoot = path.join(__dirname, 'public');
+  const publicRoot = __dirname;
   const filePath = path.join(publicRoot, path.normalize(rel).replace(/^([.][.][/\\])+/, ''));
   if (!filePath.startsWith(publicRoot)) return send(res, 403, 'Forbidden');
 

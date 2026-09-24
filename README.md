@@ -39,7 +39,7 @@ The repo ships with serverless functions in `api/` so it runs on Vercel with **z
 
 | Local (`node server.js`) | Vercel |
 |---|---|
-| static files + proxy in one process | static files from `public/`, proxy as functions in `api/` |
+| static files + proxy in one process | static files from the repo root, proxy as functions in `api/` |
 | same routes: `/api/chat`, `/api/models`, `/api/image` | identical — the frontend needs no changes |
 
 Optional env var: `UPSTREAM` (defaults to `https://gemini-web2api-one.vercel.app`).
@@ -65,11 +65,11 @@ The **Thinking** toggle maps your selected base model to its `-thinking` variant
 ## Project layout
 
 ```
+├── index.html         # app shell
+├── styles.css         # Apple UI design system
+├── app.js             # chat state, localStorage store, streaming, UI logic
+├── favicon.svg        # BEN monogram icon
 ├── server.js          # zero-dep Node server: static files + streaming proxy (local dev)
 ├── api/               # Vercel serverless functions (chat, models, image)
-├── vercel.json        # deploy config: static root + function timeouts
-└── public/
-    ├── index.html     # app shell
-    ├── styles.css     # Apple UI design system
-    └── app.js         # chat state, localStorage store, streaming, UI logic
+└── vercel.json        # deploy config: function timeouts
 ```
